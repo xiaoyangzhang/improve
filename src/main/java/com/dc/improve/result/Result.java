@@ -1,5 +1,7 @@
 package com.dc.improve.result;
 
+import java.io.Serializable;
+
 /**
  * @program: improve
  * @description:
@@ -7,8 +9,9 @@ package com.dc.improve.result;
  * @date: 2018/8/14 下午12:11
  **/
 
-public class Result<T> {
+public class Result<T> implements Serializable {
 
+    private static final long serialVersionUID = 5745486450771783599L;
     private String code;
 
     private String msg;

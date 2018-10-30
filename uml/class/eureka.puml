@@ -1,0 +1,42 @@
+@startuml
+
+/'abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}'/
+class EurekaDiscoveryClient
+interface DiscoveryClient
+interface EurekaClient
+interface LookupService
+interface EurekaInstanceConfig
+class DiscoveryClient_netflix
+
+DiscoveryClient <|.. EurekaDiscoveryClient
+LookupService <|-- EurekaClient
+EurekaClient <|--* EurekaDiscoveryClient
+EurekaClient <|.. DiscoveryClient_netflix
+EurekaInstanceConfig <|--* EurekaDiscoveryClient
+
+interface DiscoveryClient{
+getInstances(String)
+getServices()
+}
+@enduml

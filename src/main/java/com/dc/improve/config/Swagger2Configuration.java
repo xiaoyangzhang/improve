@@ -11,7 +11,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,6 @@ import java.util.List;
  * @date: 2018/8/14 下午12:08
  **/
 @Configuration
-@EnableSwagger2
 public class Swagger2Configuration {
 
     @Value("${spring.application.name}")
@@ -45,8 +43,8 @@ public class Swagger2Configuration {
 //        tokenParameterBuilder.name("token").parameterType("header")
 //                             .defaultValue("").description("用户token,登录后接口必传").modelRef(new ModelRef("string"))
 //                             .required(false).build();
-        List<Parameter> aParameters = new ArrayList<Parameter>();
-        aParameters.add(plateformParameterBuilder.build());
+//        List<Parameter> aParameters = new ArrayList<Parameter>();
+//        aParameters.add(plateformParameterBuilder.build());
 //        aParameters.add(languageParameterBuilder.build());
 //        aParameters.add(tokenParameterBuilder.build());
         //生产环境禁止扫描API
@@ -54,10 +52,10 @@ public class Swagger2Configuration {
         // return new Docket(DocumentationType.SWAGGER_2).enable(false);
         /*} else {*/
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(buildApiInf()).
-                        globalOperationParameters(aParameters)
+                .apiInfo(buildApiInf())
+//                .globalOperationParameters(aParameters)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.dc.improve"))//要扫描的API(Controller)基础包
+                .apis(RequestHandlerSelectors.basePackage("com.dc.improve.controller"))//要扫描的API(Controller)基础包
                 .paths(PathSelectors.any())
                 .build();
         /* }*/

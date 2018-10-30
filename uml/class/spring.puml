@@ -1,0 +1,33 @@
+@startuml
+class XmlBeanFactory
+class DefaultListableBeanFactory
+abstract class AbstractAutowireCapableBeanFactory
+interface ConfigurableListableBeanFactory
+interface ListableBeanFactory
+interface BeanFactory
+interface AutowireCapableBeanFactory
+interface ConfigurableBeanFactory
+interface HierarchicalBeanFactory
+interface SingletonBeanRegistry
+abstract class AbstractBeanFactory
+interface BeanDefinitionRegistry
+interface AliasRegistry
+
+
+DefaultListableBeanFactory <|-- XmlBeanFactory
+AbstractAutowireCapableBeanFactory <|-- DefaultListableBeanFactory
+ConfigurableListableBeanFactory <|.. DefaultListableBeanFactory
+ListableBeanFactory <|-- ConfigurableListableBeanFactory
+BeanFactory <|-- ListableBeanFactory
+AutowireCapableBeanFactory <|-- ConfigurableListableBeanFactory
+BeanFactory <|-- AutowireCapableBeanFactory
+ConfigurableBeanFactory <|-- ConfigurableListableBeanFactory
+HierarchicalBeanFactory <|-- ConfigurableBeanFactory
+SingletonBeanRegistry <|-- ConfigurableBeanFactory
+BeanFactory <|-- SingletonBeanRegistry
+BeanFactory <|-- SingletonBeanRegistry
+AutowireCapableBeanFactory <|.. AbstractAutowireCapableBeanFactory
+AbstractBeanFactory <|-- AbstractAutowireCapableBeanFactory
+BeanDefinitionRegistry <|.. DefaultListableBeanFactory
+AliasRegistry <|-- BeanDefinitionRegistry
+@enduml
